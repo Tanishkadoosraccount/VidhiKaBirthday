@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color: lightgreen; position: fixed; top: 300px; left: 340px; font-size: 80px;">ACCESS GRANTED</h1>  
+<input type="button" name="" id="btn" onclick="myFunction()"  value="Enter">
+    <canvas>
+    </canvas>
+    <style>
+       * {margin: 0; padding: 0}
+body {background: #000;}
+canvas {display: block;} 
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(Retro\ Gaming.ttf);
+ }
+  
+ h1 {
+    font-family: myFirstFont;
+ }
+
+ #btn{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 450px;
+    opacity: 0.75;
+    border-radius: 30px;
+    left: 630px;
+    background-color: lightgreen;
+    font-size: 40px;
+    font-family: myFirstFont;
+color: white;
+ }
+    </style>
+    <script>
+        // Initialising the canvas
+var canvas = document.querySelector('canvas'),
+    ctx = canvas.getContext('2d');
+
+// Setting the width and height of the canvas
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Setting up the letters
+var letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ';
+letters = letters.split('');
+
+// Setting up the columns
+var fontSize = 10,
+    columns = canvas.width / fontSize;
+
+// Setting up the drops
+var drops = [];
+for (var i = 0; i < columns; i++) {
+  drops[i] = 1;
+}
+
+// Setting up the draw function
+function draw() {
+  ctx.fillStyle = 'rgba(0, 0, 0, .1)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  for (var i = 0; i < drops.length; i++) {
+    var text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillStyle = '#0f0';
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    drops[i]++;
+    if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+      drops[i] = 0;
+    }
+  }
+}
+
+// Loop the animation
+setInterval(draw, 33);
+
+function myFunction(){
+    window.location.href = "vidflex.html";
+
+}
+    </script>
+</body>
+</html>

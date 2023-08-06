@@ -1,0 +1,333 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
+   
+
+</head>
+<body>
+    <div id="txtc">
+    <h1 style="font-family: myFirstFont;" id="txt">ANSWER THE FOLLOWING QUESTIONS TO CONTINUE!</h1>
+</div>
+<div id="game">
+<input type="button" name="" id="btn" onclick="startGame()" value="START THE GAME">
+<input id="question1"disabled hidden>
+<input id="question2"disabled hidden>
+
+<input type="text" id="answer1" hidden>
+<input type="text" id="answer2" hidden>
+
+
+<h2 id="result"></h2>
+
+
+<input type="button" onclick="checkAnswer()" id="btn2" value="Check Answer" hidden>
+<input type="button" onclick="checkAnswer2()" id="btn3" value="Check Answer" hidden>
+
+
+</div>
+
+
+<script>
+
+
+    function startGame(){
+   document.getElementById("btn").hidden=true; 
+   document.getElementById("question1").hidden = false; 
+
+document.getElementById("question1").value = "What Does BKL Stand For?";
+document.getElementById("answer1").hidden = false; 
+
+let answerone = document.getElementById("answer1").value;
+
+document.getElementById("btn2").hidden = false; 
+
+
+
+    }
+
+    function checkAnswer(){
+        let answerone = document.getElementById("answer1").value;
+
+if(answerone == "bhen ke lode"){
+document.getElementById("result").innerHTML = "Well done";
+document.getElementById("question1").hidden = true; 
+document.getElementById("answer1").hidden = true; 
+document.getElementById("result").hidden = true;
+document.getElementById("btn2").hidden = true; 
+document.getElementById("question2").hidden = false; 
+document.getElementById("answer2").hidden = false; 
+document.getElementById("btn3").hidden = false; 
+document.getElementById("question2").value = "Tera IQ";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} else{
+    document.getElementById("result").innerHTML = "Wrong";
+}
+
+
+    }
+
+function checkAnswer2(){
+   let answer2= document.getElementById("answer2").value;
+   if(answer2=="0"){
+       document.getElementById("result").innerHTML="Well done";
+       document.getElementById("result").hidden=false;
+window.location.href = "vidflex(pre).html";
+    
+
+   }else{
+    document.getElementById("result").innerHTML="Wrong";
+    document.getElementById("result").hidden=false;
+
+
+   }
+
+}
+
+    
+
+</script>
+</div>
+    <style>
+    #btn3{ 
+        width: 130px;
+            height: 50px;
+            position: relative;
+            top: 170px;
+            left: 411px;
+            border-radius: 30px;
+            opacity: 0.85;
+            background-color: tomato;
+            font-family: myFirstFont;  
+    }
+        #answer2{
+            position: relative;
+            top: 170px;
+            left: 350px;
+            border-radius: 50px;
+            width: 250px; 
+            height: 60px;
+            size: 40px;
+            font-family: myFirstFont;
+            font-size: 35px;
+        }
+        #question2{
+            width: 1000px;
+            font-size: 55px;
+            position: relative;
+            top: 90px;
+            left: 50px;
+            opacity: 1;
+            border: hidden;
+            font-family: myFirstFont;
+        }
+        #result{
+            top: 100px;
+            height: 90px;
+            left: 70px;
+            position: relative;
+
+        }
+        #result2{
+            top: 100px;
+            height: 90px;
+            left: 70px;
+            position: relative;
+
+        }
+        #btn2{
+            width: 130px;
+            height: 50px;
+            position: relative;
+            top: 130px;
+            left: 411px;
+            border-radius: 30px;
+            opacity: 0.85;
+            background-color: tomato;
+            font-family: myFirstFont;
+        }
+        #answer1{
+            position: relative;
+            top: 170px;
+            left: 350px;
+            border-radius: 50px;
+            width: 250px; 
+            height: 60px;
+            size: 40px;
+            font-family: myFirstFont;
+            font-size: 35px;
+        }
+        #question1{
+            width: 1000px;
+            font-size: 55px;
+            position: relative;
+            top: 80px;
+            left: 50px;
+            opacity: 1;
+            border: hidden;
+            font-family: myFirstFont;
+        }
+        #btn{
+            width: 400px;
+            height: 200px;
+            font-family: myFirstFont;
+            border-radius:  30px;
+            background-color: tomato;
+            position: relative;
+            top: 130px;
+            font-size: 35px;
+            left: 280px;
+        }
+h1{
+    font-family: myFirstFont;
+}
+        #game{
+            background-color: white;
+            border-radius: 20px;
+            opacity: 0.85;
+            width: 1000px;
+            height:420px;
+            position: fixed;
+            top: 250px;
+            left:250px ;
+            overflow: auto;
+
+        }
+        #txtc{
+            position: fixed;
+            top: 50px;
+            text-align: center;
+            left: 270px;
+          font-size:25px;
+          width: 900px;
+        }
+        
+        @font-face {
+    font-family: myFirstFont;
+    src: url(Retro\ Gaming.ttf);
+ }
+  
+ h2 {
+    font-family: myFirstFont;
+    color: darkgreen;
+ }
+    </style>
+    <script>
+
+        var origin;
+        
+        var frame = 0;
+        var flyBoxCount = 20;
+        var flyBoxes = [];
+        var flyBoxPause = 200;
+        var flyBoxColors = [];
+        
+        function setup() {
+          createCanvas(windowWidth, windowHeight);
+          origin = createVector(windowWidth/2, windowHeight/2);
+          
+          for(i = -flyBoxCount/2; i < flyBoxCount/2; i++) {
+            var box = createFlyBox(i);
+            box.start();
+            flyBoxes.push(box);
+          }
+          
+          var getRandColor = () => {
+            return color(random(100, 200), random(100, 200), random(100, 200));
+          }
+        
+          flyBoxColors.push(color('#f2623a'));
+          flyBoxColors.push(color('#3af262'));
+          flyBoxColors.push(color('#623af2'));
+          flyBoxColors.push(color('#f23a58'));
+          flyBoxColors.push(color('#caf23a'));
+        }
+        
+        function draw() {
+          rectMode(CENTER);
+          for(i = 0; i < flyBoxCount; i++) {
+            var flyBox = flyBoxes[i];
+            flyBox.draw();
+          }
+          
+          // WIP
+          stroke(0, 0, 0);
+          strokeWeight(40);
+          noFill();
+          translate(origin.x, origin.y);
+          rotate((sin(frame*0.02) + cos(frame*0.03))*PI);
+          //rect(0, 0, 300, 300);
+          
+          frame += 1;
+        }
+        
+        function createFlyBox(offset) {
+          return {
+            offset: offset,
+            delay: 0,
+            getRandomDelay: () => { return random(0, flyBoxCount) * 15; },
+            steps: 0,
+            directions: [createVector(-1, -1), createVector(-1, 1), createVector(1, -1), createVector(1, 1)],
+            currentDirection: 0,
+            iteration: 0,
+            size: 80,
+            start: function() {
+              this.delay = this.getRandomDelay();
+              this.steps = -this.delay;
+            },
+            draw: function() {
+              this.steps += 20;
+              
+              if(this.steps < 0) {
+                return;
+              }
+              
+              fill(flyBoxColors[this.iteration]);
+              noStroke();
+              var dir = this.directions[this.currentDirection];
+              rect(
+                -dir.x*this.steps + origin.x + dir.x*origin.x - dir.x*this.offset * (this.size*0.75),
+                -dir.y*this.steps + origin.y + dir.y*origin.y + dir.y*this.offset * (this.size*0.75),
+                this.size, this.size);
+              
+              if(this.steps > max(windowWidth, windowHeight)) {
+                var newDelay = this.getRandomDelay();
+                this.steps = -flyBoxPause + this.delay - newDelay;
+                this.delay = newDelay;
+                this.currentDirection = (this.currentDirection + 1) % 4;
+                this.iteration = (this.iteration + 1) % flyBoxColors.length;
+              }
+            }
+          }
+        }</script>
+    <style>CSS JSResult Skip Results Iframe
+        EDIT ON
+        html, body {
+          margin: 0;
+        }
+        
+        
+        canvas {
+          display: block;
+
+        }</style>
+</body>
+</html>
